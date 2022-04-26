@@ -11,8 +11,11 @@ class Program
         Room room2 = new Room { Description = "" };
         Room room3 = new Room { Description = "" };
 
+        room1.loot = new Goldcoin();
+
 
         Room currentRoom = room1;
+        room1.AddToNorth(room2);
         
 
 
@@ -27,6 +30,7 @@ class Program
             {
                 case ConsoleKey.N:
                     tmpRoom = currentRoom.GoNorth;
+                    CheckForLoot(currentRoom);
                     break;
                 case ConsoleKey.S:
                     tmpRoom = currentRoom.GoSouth;
@@ -56,14 +60,17 @@ class Program
 
 
 
-
-
-
+            
 
     }
 
+    private static void CheckForLoot(Room room)
+    {
+        if(room.loot != null)
+        {
+            Console.WriteLine("you found loot");
 
-
-
-
+            room.loot = null;
+        }
+    }
 }
