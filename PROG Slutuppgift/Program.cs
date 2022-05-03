@@ -69,8 +69,17 @@ class Program
         if(room.loot != null)
         {
             Console.WriteLine("you found loot");
-
+            Console.WriteLine(room.loot);
+            WhatLoot(room);
             room.loot = null;
+        }
+    }
+
+    public static void WhatLoot(Room room)
+    {
+        if(room.loot == Goldcoin)
+        {
+            Console.WriteLine("COIN");
         }
     }
 }
