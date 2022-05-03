@@ -15,7 +15,7 @@ namespace PROG_Slutuppgift
 
         public string Description { get; set; } = "";
 
-        public Loot loot;
+        public Loot? loot;
 
         public Room GoSouth => _south;
         public Room GoEast => _east;
