@@ -81,6 +81,10 @@ class Program
         {
             GoldFound();
         }
+        if (room.loot is )
+        {
+            
+        }
     }
 
     public static void GoldFound()
@@ -89,4 +93,5 @@ class Program
         Console.WriteLine("You found Gold! +10 Score");
         Console.WriteLine($"Total Score: {Score}");
     }
+
 }

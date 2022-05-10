@@ -20,4 +20,16 @@ namespace PROG_Slutuppgift
     {
 
     }
+    public class Apple : Loot
+    {
+
+    }
+    public class Enemy : Loot
+    {
+
+    }
+    public class Boss : Loot
+    {
+
+    }
 }
