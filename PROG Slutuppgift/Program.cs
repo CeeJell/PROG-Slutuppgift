@@ -2,14 +2,16 @@
 
 class Program
 {
-
+    static int Score = 0;
+    static int UserDamage;
+    static int UserHealth;
     public static void Main()
     {
         Console.WriteLine("Welcome to a Single User Dungeon, made by Charlie");
 
-        Room room1 = new Room { Description = "" };
-        Room room2 = new Room { Description = "" };
-        Room room3 = new Room { Description = "" };
+        Room room1 = new Room { Description = "room 1" };
+        Room room2 = new Room { Description = "room 2" };
+        Room room3 = new Room { Description = "room 3" };
 
         room1.loot = new Gold();
 
@@ -68,7 +70,6 @@ class Program
     {
         if(room.loot != null)
         {
-            Console.WriteLine("you found loot");
             WhatLoot(room);
             room.loot = null;
         }
@@ -78,7 +79,14 @@ class Program
     {
         if(room.loot is Gold)
         {
-            Console.WriteLine("COIN");
+            GoldFound();
         }
+    }
+
+    public static void GoldFound()
+    {
+        Score += 10;
+        Console.WriteLine("You found Gold! +10 Score");
+        Console.WriteLine($"Total Score: {Score}");
     }
 }

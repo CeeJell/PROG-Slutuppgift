@@ -15,4 +15,9 @@ namespace PROG_Slutuppgift
     {
 
     }
+
+    public class Sword : Loot
+    {
+
+    }
 }
