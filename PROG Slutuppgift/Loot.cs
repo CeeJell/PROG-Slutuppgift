@@ -20,6 +20,10 @@ namespace PROG_Slutuppgift
     {
 
     }
+    public class Helmet : Loot
+    {
+
+    }
     public class Apple : Loot
     {
 

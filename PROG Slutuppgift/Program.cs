@@ -81,10 +81,11 @@ class Program
         {
             GoldFound();
         }
-        if (room.loot is )
+        if (room.loot is Sword)
         {
             
         }
+
     }
 
     public static void GoldFound()
