@@ -11,7 +11,7 @@ namespace PROG_Slutuppgift
 
     }
 
-    public class Goldcoin : Loot
+    public class Gold : Loot
     {
 
     }

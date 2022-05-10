@@ -11,7 +11,7 @@ class Program
         Room room2 = new Room { Description = "" };
         Room room3 = new Room { Description = "" };
 
-        room1.loot = new Goldcoin();
+        room1.loot = new Gold();
 
 
         Room currentRoom = room1;
@@ -76,7 +76,7 @@ class Program
 
     public static void WhatLoot(Room room)
     {
-        if(room.loot is Goldcoin)
+        if(room.loot is Gold)
         {
             Console.WriteLine("COIN");
         }

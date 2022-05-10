@@ -8,19 +8,19 @@ namespace PROG_Slutuppgift
 {
     public class Room
     {
-        private Room _north;
-        private Room _south;
-        private Room _east;
-        private Room _west;
+        private Room? _north;
+        private Room? _south;
+        private Room? _east;
+        private Room? _west;
 
         public string Description { get; set; } = "";
 
         public Loot? loot;
 
-        public Room GoSouth => _south;
-        public Room GoEast => _east;
-        public Room GoWest => _west;
-        public Room GoNorth => _north; 
+        public Room? GoSouth => _south;
+        public Room? GoEast => _east;
+        public Room? GoWest => _west;
+        public Room? GoNorth => _north; 
 
 
         public void AddToNorth(Room otherRoom, bool oneway = false)
