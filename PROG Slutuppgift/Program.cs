@@ -3,8 +3,16 @@
 class Program
 {
     static int Score = 0;
-    static int UserDamage;
-    static int UserHealth;
+    static int UserDMG = 3;
+    static int UserHP = 20;
+
+    static int EnemyDMG = 2;
+    static int EnemyHP = 18;
+
+    static int BossDMG = 8;
+    static int BossHP = 100;
+
+
     public static void Main()
     {
         Console.WriteLine("Welcome to a Single User Dungeon, made by Charlie");
@@ -93,6 +101,16 @@ class Program
         Score += 10;
         Console.WriteLine("You found Gold! +10 Score");
         Console.WriteLine($"Total Score: {Score}");
+    }
+    public static void SwordFound()
+    {
+        UserDMG += 2;
+        Console.WriteLine("You found a Sword! +2 DMG");
+    }
+    public static void HelmetFound()
+    {
+        UserHP += 10;
+        Console.WriteLine("You found a Helmet! +10 HP");
     }
 
 }
