@@ -27,13 +27,14 @@ class Program
 
         Room currentRoom = room1;
         room1.AddToNorth(room2);
-        
 
+        Console.WriteLine("Press 'Y' to see all Commands // Press 'I' to see your Inventory");
+        Console.WriteLine("Where do you want to go? (N)orth, (S)outh, (E)ast or (W)est");
 
         // Gameloop
         while (true)
         {
-            Console.WriteLine("Where do you want to go? (N)orth, (S)outh, (E)ast or (W)est");
+
             var keyPressed = Console.ReadKey(true);
 
             Room tmpRoom = null;    
@@ -51,12 +52,15 @@ class Program
                 case ConsoleKey.W:
                     tmpRoom = currentRoom.GoWest;
                     break;
+                case ConsoleKey.Y:
+                    Console.WriteLine("N: North / S: South / E: East / W: West / I: Inventory/Character Info / A: Eat Apple / O: Attack Opponent");
+                    break;
                 default:
                     System.Console.Write("Not one of the options, ");
                     break;
             }
 
-            if (tmpRoom == null)
+            if (tmpRoom == null && keyPressed.Key != ConsoleKey.Y)
             {
                 System.Console.WriteLine("You can't go that way");
                 System.Console.WriteLine();
@@ -116,6 +120,7 @@ class Program
     public static void AppleFound()
     {
         AppleCount++;
-        Console.WriteLine(""); 
+        Console.WriteLine("You found an Apple.");
+        Console.WriteLine($"Apples: {AppleCount}");
     }
 }
