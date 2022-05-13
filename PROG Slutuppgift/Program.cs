@@ -12,6 +12,7 @@ class Program
     static int BossDMG = 8;
     static int BossHP = 100;
 
+    static int AppleCount = 0;
 
     public static void Main()
     {
@@ -40,7 +41,6 @@ class Program
             {
                 case ConsoleKey.N:
                     tmpRoom = currentRoom.GoNorth;
-                    CheckForLoot(currentRoom);
                     break;
                 case ConsoleKey.S:
                     tmpRoom = currentRoom.GoSouth;
@@ -64,6 +64,7 @@ class Program
             }
             currentRoom = tmpRoom;
             Console.WriteLine(currentRoom.Description);
+            CheckForLoot(currentRoom);
 
 
         }
@@ -112,5 +113,9 @@ class Program
         UserHP += 10;
         Console.WriteLine("You found a Helmet! +10 HP");
     }
-
+    public static void AppleFound()
+    {
+        AppleCount++;
+        Console.WriteLine(""); 
+    }
 }
