@@ -59,6 +59,7 @@ class Program
         Room currentRoom = room1;
         Room tmpRoom = null;
 
+
         room2.loot = new Gold();
         room3.loot = new Sword();
         room4.loot = new Gold();
