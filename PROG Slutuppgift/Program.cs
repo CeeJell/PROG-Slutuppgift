@@ -204,6 +204,7 @@ class Program
                     if (UserHP > MaxHP)
                         UserHP = 20;
                         Console.WriteLine("You ate an Apple, +10 HP");
+                        Console.WriteLine($"Apples: {AppleCount}");
                     }
                     continue;
                 case ConsoleKey.F:
@@ -270,11 +271,11 @@ class Program
         }
         if (room.loot is TwoApples)
         {
-            AppleFound();
+            TwoApplesFound();
         }
         if (room.loot is GoldAndApple)
         {
-            AppleFound();
+            GoldAndAppleFound();
         }
         if (room.loot is Enemy)
         {

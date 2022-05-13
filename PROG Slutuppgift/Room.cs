@@ -33,7 +33,7 @@ namespace PROG_Slutuppgift
         {
             if (!oneway)
                 otherRoom._north = this;
-            _south = this;
+            _south = otherRoom;
         }
 
         public void AddToEast(Room otherRoom, bool oneway = false)
