@@ -28,6 +28,14 @@ namespace PROG_Slutuppgift
     {
 
     }
+    public class TwoApples : Loot
+    {
+
+    }
+    public class GoldAndApple : Loot
+    {
+
+    }
     public class Enemy : Loot
     {
 
