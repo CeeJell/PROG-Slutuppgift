@@ -3,21 +3,21 @@
 class Program
 {
     static int Score = 0;
-    static int UserDMG = 3;
-    static int UserHP = 20;
-    static int MaxHP = 20;
+    static double UserDMG = 3;
+    static double UserHP = 25;
+    static double MaxHP = 25;
 
-    static int EnemyDMG = 2;
-    static int EnemyHP = 18;
+    static double EnemyDMG = 2;
+    static double EnemyHP = 18;
 
-    static int BossDMG = 8;
-    static int BossHP = 100;
+    static double BossDMG = 6.5;
+    static double BossHP = 45;
 
     static int AppleCount = 0;
 
     static bool Fled = false;
     static bool Gameloop = true;
-    static bool AddLoot = false;
+    static bool Restarted = false;
 
     static Random CritRnd = new Random();
     static int CritInt;
@@ -29,14 +29,14 @@ class Program
         Room room3 = new Room { Description = "'A SWORD! do they really just combine and become better? how does that work? Oh well, I can go back to where that rat was " +
             "by going south.'" };
         Room room4 = new Room { Description = "'GOLD! I FOUND GOLD! I'm keeping that and selling it. Is this way just a circle? I can continue this way by going west.'" };
-        Room room5 = new Room { Description = "'ANOTHER ONE? The cave also takes a turn here to the south.'" };
+        Room room5 = new Room { Description = "'Another apple. Good incase I get hungry. The cave also takes a turn here to the south.'" };
         Room room6 = new Room { Description = "'Rats seem to like this place. I can continue west if i get past it.'" };
         Room room7 = new Room { Description = "'OH NO! The entrance got blocked by falling rocks. I guess I have to venture further. Hmm, there's an apple just laying here, " +
-            "I wonder if its edible. I can go east and west, but I wonder why there's a small opening to the south.'" };
+            "I wonder if it's edible. I can go east and west, but I wonder why there's a small opening to the south.'" };
         Room room8 = new Room { Description = "'This place might be emptier than I thought. Why are there so many small openings, both north and south. At least I can " +
             "continue east.'" };
         Room room9 = new Room { Description = "'That's a rat. I wonder if it's hostile. The cave also seems to continue both east and south. And another stupid opening " +
-            "to the north'" };
+            "I can't go through to the north'" };
         Room room10 = new Room { Description = "'Two more apples. How are they not rotten? The cave is also making a turn to the north.'" };
         Room room11 = new Room { Description = "'Seriously? Another one? I'm starting to regret going this way, maybe I should go back. Or continue south.'" };
         Room room12 = new Room { Description = "'I wonder if this place is an old Goldmine. The opening to the north goes to the beginning. " +
@@ -45,7 +45,7 @@ class Program
         Room room14 = new Room { Description = "'Empty. I think I hear another Rat to the south.'" };
         Room room15 = new Room { Description = "'HOLY CRAP THAT RAT IS ENORMOUS! Can I really take him on? He doesn't look too fast though, so I think I will have time " +
             "to eat inbetween hits.'" };
-        Room room16 = new Room { Description = "'Two more apples. Why do I hear such loud breathing to the east?'" };
+        Room room16 = new Room { Description = "'The lock broke! Two more apples. Why do I hear such loud breathing to the east?'" };
         Room room17 = new Room { Description = "'Why is there a door if I continue this way? It looks locked, but maybe I can break the lock using my sword.'" };
         Room room18 = new Room { Description = "'Finally. Some rest. I can go both east and west.'" };
         Room room19 = new Room { Description = "'Damnit, I thought I was done with y'all. I can see something glimmering behind it though.'" };
@@ -77,7 +77,7 @@ class Program
         room2.loot = new Gold();
         room3.loot = new Sword();
         room4.loot = new Gold();
-        room5.loot = new Enemy();
+        room5.loot = new Apple();
         room6.loot = new Enemy();
         room7.loot = new Apple();
         room9.loot = new Enemy();
@@ -147,7 +147,7 @@ class Program
         // Gameloop
         while (Gameloop)
         {
-            if (AddLoot)
+            if (Restarted)
             {
                 room2.loot = new Gold();
                 room3.loot = new Sword();
@@ -173,9 +173,55 @@ class Program
                 room27.loot = new Enemy();
                 room28.loot = new Gold();
                 room29.loot = new Sword();
+                /*
+                room1.Description = "'Should i really enter this Cave? At least i have my sword if anything hostile lives there.'(South)";
+                room2.Description = "'Oooo the portal took me to some more Gold! But it closed behind me. The only way out seems to be that small opening to the south.'";
+                room3.Description = "'A SWORD! do they really just combine and become better? how does that work? Oh well, I can go back to where that rat was " +
+            "by going south.'";
+                room4.Description = "'GOLD! I FOUND GOLD! I'm keeping that and selling it. Is this way just a circle? I can continue this way by going west.'";
+                room5.Description = "'ANOTHER ONE? The cave also takes a turn here to the south.'";
+                room6.Description = "'Rats seem to like this place. I can continue west if i get past it.'";
+                room7.Description = "'OH NO! The entrance got blocked by falling rocks. I guess I have to venture further. Hmm, there's an apple just laying here, " +
+            "I wonder if it's edible. I can go east and west, but I wonder why there's a small opening to the south.'";
+                room8.Description = "'This place might be emptier than I thought. Why are there so many small openings, both north and south. At least I can " +
+            "continue east.'";
+                room9.Description = "'That's a rat. I wonder if it's hostile. The cave also seems to continue both east and south. And another stupid opening " +
+            "I can't go through to the north'";
+                room10.Description = "'Two more apples. How are they not rotten? The cave is also making a turn to the north.'";
+                room11.Description = "'Seriously? Another one? I'm starting to regret going this way, maybe I should go back. Or continue south.'";
+                room12.Description = "'I wonder if this place is an old Goldmine. The opening to the north goes to the beginning. " +
+            "It seems to be big enough to fit through from this end.'";
+                room13.Description = "'More gold. Nice. I recognise the room to the north, even though the hole is small, I think it's the only way.'";
+                room14.Description = "'Empty. I think I hear another Rat to the south.'";
+                room15.Description = "'HOLY CRAP THAT RAT IS ENORMOUS! Can I really take him on? He doesn't look too fast though, so I think I will have time " +
+            "to eat inbetween hits.'";
+                room16.Description = "'Two more apples. Why do I hear such loud breathing to the east?'";
+                room17.Description = "Why is there a door if I continue this way? It looks locked, but maybe I can break the lock using my sword.'";
+                room18.Description = "'Finally. Some rest. I can go both east and west.'";
+                room19.Description = "'Damnit, I thought I was done with y'all. I can see something glimmering behind it though.'";
+                room20.Description = "'AAAH, I fell. Another sword! and it forges together with mine. no logic. But at least it's sharper. I can't go back " +
+            "where I came, so I'm guessing I have to continue north, as it's the only way.'";
+                room21.Description = "'A Helmet?! That could come in handy. The cave seems to continue north.'";
+                room22.Description = "'Why could I not have like a bow or something so I didn't have to get close to these thimgs. The cave continues south but " +
+            "why are there vines on the east wall?'";
+                room23.Description = "'Ooooo, behind the vines was a small space with Gold and an Apple!. But I can't see anymore paths this way.'";
+                room24.Description = "'I'm getting good at finding these guys. I think I can see something green-ish to the east.'";
+                room25.Description = "'More apples! The only way seems to be north. I think I can see another sword up ahead.'";
+                room26.Description = "'Why does this cave have so many apples? I can continue south, or go back because this seems endless.'";
+                room27.Description = "'I knew I should've taken that goddamn portal. After I MASSACRE this rat I can continue north.'";
+                room28.Description = "'What is it with this cave and having openings you can only go through from one side? At least there is some gold here. " +
+            "I can't go back so I guess I'll continue west.'";
+                room29.Description = "'Ooooo, another merging sword. But more importantly, to the east there's a PORTAL? 'To the start' it says. hmmmmmm. " +
+            "There's also a way to the west but I'm uncertain wether I would be able to go both ways through it. Or I could just walk back the same way I came.'";
+                room30.Description = "'I defeated the huge rat thing!' 'cONGRATULATIONS aDVENTURER.' 'As I continued into the next room I see an old woman.' " +
+            "'iF yOU wANT tO mAKE iT oUT, yOU hAVE tO dRINK tHIS pOTION, bUT iT'S nOT fREE. yOU sHOULD hAVE jUST eNOUGH iF yOU vENTURED tHROUGH tHE eNTIRE cAVESYSTEM. " +
+            "iF yOU aRE uNSURE iF yOU hAVE eNOUGH oR nOT, yOU cAN cHOOSE tO hEAD bACK, EAST, bUT iF yOU tHINK yOU hAVE eNOUGH, bUY tHE pOTION, WEST. yOUR cHOICE'";
+                room31.Description = "";
+                */
+
                 currentRoom = room1;
                 lastRoom = room1;
-                AddLoot = false;
+                Restarted = false;
             }
             if (Fled)
             {
@@ -187,7 +233,7 @@ class Program
             }
             if (currentRoom == room31)
             {
-                if (Score == 9999)
+                if (Score == 290)
                 {
                     Console.WriteLine("'yOU hAVE eNOUGH. tHANK yOU fOR tHE vISIT!'");
                     Console.WriteLine("You drink the potion and your vision fades to black.");
@@ -235,7 +281,7 @@ class Program
                     break;
                 case ConsoleKey.Y:
                     Console.WriteLine("N: North / S: South / E: East / W: West");
-                    Console.WriteLine("I: Inventory/Character Info / A: Eat Apple / D: Damage Opponent / F: Flee from Opponent");
+                    Console.WriteLine("I: Inventory/Character Info / A: Eat Apple / D: Damage Opponent / F: Flee from Opponent / R: Repeat Room Description");
                     continue;
                 case ConsoleKey.I:
                     if (AppleCount != 0)
@@ -280,7 +326,7 @@ class Program
             currentRoom = tmpRoom;
             if (currentRoom == room16)
             {
-                if (UserDMG != 6)
+                if (UserDMG < 6)
                 {
                     Console.WriteLine("'The lock wont budge, I guess I have to become stronger.'");
                     currentRoom = room17;
@@ -293,10 +339,16 @@ class Program
             CheckForLoot(currentRoom);
 
 
-            if (currentRoom == room7)
+            if (lastRoom == room7)
             {
                 room7.Description = "'I'm back at the beginning. Should I go east or west?'";
             }
+            /*
+            else
+            {
+                OldRoom(lastRoom);
+            }
+            */
         }
 
 
@@ -304,6 +356,11 @@ class Program
 
 
     }
+    private static void OldRoom(Room room)
+    {
+        room.Description = "'I have been here before.'";
+    }
+
 
     private static void CheckForLoot(Room room)
     {
@@ -344,6 +401,12 @@ class Program
         if (room.loot is Enemy)
         {
             EnemyFound();
+            if (!Restarted || Fled)
+            {
+                Console.WriteLine();
+                Console.WriteLine($"REPEAT OF WHAT YOU SAID: {room.Description}");
+                Console.WriteLine();
+            }
         }
         if (room.loot is Boss)
         {
@@ -483,9 +546,12 @@ class Program
     static void BossFound()
     {
         Console.WriteLine("You encountered a BOSS MUTANT RAT!");
-
-
-        while (UserHP > 0 && EnemyHP > 0 && Fled == false)
+        if (MaxHP != 35)
+        {
+            BossHP = 40;
+            BossDMG = 5.5;
+        }
+        while (UserHP > 0 && BossHP > 0 && Fled == false)
         {
             Console.WriteLine();
             Console.WriteLine($"User HP: {UserHP} // BOSS HP: {BossHP}");
@@ -538,13 +604,13 @@ class Program
                     CritInt = CritRnd.Next(1, 11);
                     if (CritInt == 1)
                     {
-                        Console.WriteLine($"The BOSS bit you and got a CRITICAL HIT, {EnemyDMG * 2} Damage!");
-                        UserHP -= 2 * BossHP;
+                        Console.WriteLine($"The BOSS bit you and got a CRITICAL HIT, {BossDMG * 1.5} Damage!");
+                        UserHP -= 1.5 * BossDMG;
                     }
                     else
                     {
-                        Console.WriteLine($"The Rat bit you and did {EnemyDMG} Damage!");
-                        UserHP -= BossHP;
+                        Console.WriteLine($"The Rat bit you and did {BossDMG} Damage!");
+                        UserHP -= BossDMG;
                     }
                     continue;
                 default:
@@ -559,7 +625,7 @@ class Program
             Console.WriteLine("You Defeated the BOSS! +100 Score!");
             Score += 100;
             Console.WriteLine($"Total Score: {Score}");
-            Console.WriteLine("skriv något om häx fan i slutet");
+            Console.WriteLine("'I DID IT! There's light at the end of the tunnel to the east, I should check it out!'");
         }
         else
             Restart();
@@ -569,7 +635,7 @@ class Program
 
     static void Restart()
     {
-        if (UserHP !> 0)
+        if (UserHP <= 0)
         {
             Console.WriteLine("you seem to have died.");
             Console.WriteLine("sad i guess lol");
@@ -592,12 +658,17 @@ class Program
 
         Fled = false;
         Gameloop = true;
-        AddLoot = true;
-
-
+        Restarted = true;
 
         Console.Clear();
-        Console.WriteLine("DU MÅSTE LÄGGA HIT ALL LOOT SAMT START RUMMET");
+        Console.WriteLine("Welcome to a Single User Dungeon, made by Charlie");
+        Console.WriteLine();
+        Console.WriteLine("Press 'Y' to see all Commands // Press 'I' to see your Inventory");
+        Console.WriteLine();
+        Console.WriteLine("'Should i really enter this Cave? At least i have my sword if anything hostile lives there.' (South)");
+        Console.WriteLine();
+
+
     }
 
 }
