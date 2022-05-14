@@ -8,7 +8,7 @@ class Program
     static double MaxHP = 25;
 
     static double EnemyDMG = 2;
-    static double EnemyHP = 18;
+    static double EnemyHP = 14;
 
     static double BossDMG = 6.5;
     static double BossHP = 45;
@@ -490,7 +490,7 @@ class Program
                             UserHP = 20;
                         Console.WriteLine("You ate an Apple, +5 HP");
                         Console.WriteLine();
-                        Console.WriteLine($"The Rat bit you and did {EnemyDMG}!");
+                        Console.WriteLine($"The Rat bit you and did {EnemyDMG} Damage!");
                         UserHP -= EnemyDMG;
                     }
                     continue;
