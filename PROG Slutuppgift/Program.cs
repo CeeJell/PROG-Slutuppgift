@@ -18,41 +18,55 @@ class Program
     static bool Fled = false;
     static bool Gameloop = true;
     static bool AddLoot = false;
+
+    static Random CritRnd = new Random();
+    static int CritInt;
     public static void Main()
     {
-        Console.WriteLine("Welcome to a Single User Dungeon, made by Charlie");
-        Console.WriteLine();
 
-        Room room1 = new Room { Description = "room 1" };
-        Room room2 = new Room { Description = "room " };
-        Room room3 = new Room { Description = "room" };
-        Room room4 = new Room { Description = "room" };
-        Room room5 = new Room { Description = "room" };
-        Room room6 = new Room { Description = "room" };
-        Room room7 = new Room { Description = "room 7" };
-        Room room8 = new Room { Description = "room" };
-        Room room9 = new Room { Description = "room" };
-        Room room10 = new Room { Description = "room" };
-        Room room11 = new Room { Description = "room" };
-        Room room12 = new Room { Description = "room" };
-        Room room13 = new Room { Description = "room" };
-        Room room14 = new Room { Description = "room" };
-        Room room15 = new Room { Description = "room" };
-        Room room16 = new Room { Description = "room" };
-        Room room17 = new Room { Description = "room" };
-        Room room18 = new Room { Description = "room" };
-        Room room19 = new Room { Description = "room" };
-        Room room20 = new Room { Description = "room" };
-        Room room21 = new Room { Description = "room" };
-        Room room22 = new Room { Description = "room" };
-        Room room23 = new Room { Description = "room" };
-        Room room24 = new Room { Description = "room" };
-        Room room25 = new Room { Description = "room" };
-        Room room26 = new Room { Description = "room" };
-        Room room27 = new Room { Description = "room" };
-        Room room28 = new Room { Description = "room" };
-        Room room29 = new Room { Description = "room" };
-        Room room30 = new Room { Description = "room" };
+        Room room1 = new Room { Description = "'Should i really enter this Cave? At least i have my sword if anything hostile lives there.' (South)" };
+        Room room2 = new Room { Description = "'Oooo the portal took me to some more Gold! But it closed behind me. The only way out seems to be that small opening to the south.'" };
+        Room room3 = new Room { Description = "'A SWORD! do they really just combine and become better? how does that work? Oh well, I can go back to where that rat was " +
+            "by going south.'" };
+        Room room4 = new Room { Description = "'GOLD! I FOUND GOLD! I'm keeping that and selling it. Is this way just a circle? I can continue this way by going west.'" };
+        Room room5 = new Room { Description = "'ANOTHER ONE? The cave also takes a turn here to the south.'" };
+        Room room6 = new Room { Description = "'Rats seem to like this place. I can continue west if i get past it.'" };
+        Room room7 = new Room { Description = "'OH NO! The entrance got blocked by falling rocks. I guess I have to venture further. Hmm, there's an apple just laying here, " +
+            "I wonder if its edible. I can go east and west, but I wonder why there's a small opening to the south.'" };
+        Room room8 = new Room { Description = "'This place might be emptier than I thought. Why are there so many small openings, both north and south. At least I can " +
+            "continue east.'" };
+        Room room9 = new Room { Description = "'That's a rat. I wonder if it's hostile. The cave also seems to continue both east and south. And another stupid opening " +
+            "to the north'" };
+        Room room10 = new Room { Description = "'Two more apples. How are they not rotten? The cave is also making a turn to the north.'" };
+        Room room11 = new Room { Description = "'Seriously? Another one? I'm starting to regret going this way, maybe I should go back. Or continue south.'" };
+        Room room12 = new Room { Description = "'I wonder if this place is an old Goldmine. The opening to the north goes to the beginning. " +
+            "It seems to be big enough to fit through from this end.'" };
+        Room room13 = new Room { Description = "'More gold. Nice. I recognise the room to the north, even though the hole is small, I think it's the only way.'" };
+        Room room14 = new Room { Description = "'Empty. I think I hear another Rat to the south.'" };
+        Room room15 = new Room { Description = "'HOLY CRAP THAT RAT IS ENORMOUS! Can I really take him on? He doesn't look too fast though, so I think I will have time " +
+            "to eat inbetween hits.'" };
+        Room room16 = new Room { Description = "'Two more apples. Why do I hear such loud breathing to the east?'" };
+        Room room17 = new Room { Description = "'Why is there a door if I continue this way? It looks locked, but maybe I can break the lock using my sword.'" };
+        Room room18 = new Room { Description = "'Finally. Some rest. I can go both east and west.'" };
+        Room room19 = new Room { Description = "'Damnit, I thought I was done with y'all. I can see something glimmering behind it though.'" };
+        Room room20 = new Room { Description = "'AAAH, I fell. Another sword! and it forges together with mine. no logic. But at least it's sharper. I can't go back " +
+            "where I came, so I'm guessing I have to continue north, as it's the only way.'" };
+        Room room21 = new Room { Description = "'A Helmet?! That could come in handy. The cave seems to continue north.'" };
+        Room room22 = new Room { Description = "'Why could I not have like a bow or something so I didn't have to get close to these thimgs. The cave continues south but " +
+            "why are there vines on the east wall?'" };
+        Room room23 = new Room { Description = "'Ooooo, behind the vines was a small space with Gold and an Apple!. But I can't see anymore paths this way.'" };
+        Room room24 = new Room { Description = "'I'm getting good at finding these guys. I think I can see something green-ish to the east.'" };
+        Room room25 = new Room { Description = "'More apples! The only way seems to be north. I think I can see another sword up ahead.'" };
+        Room room26 = new Room { Description = "'Why does this cave have so many apples? I can continue south, or go back because this seems endless.'" };
+        Room room27 = new Room { Description = "'I knew I should've taken that goddamn portal. After I MASSACRE this rat I can continue north.'" };
+        Room room28 = new Room { Description = "'What is it with this cave and having openings you can only go through from one side? At least there is some gold here. " +
+            "I can't go back so I guess I'll continue west.'" };
+        Room room29 = new Room { Description = "'Ooooo, another merging sword. But more importantly, to the east there's a PORTAL? 'To the start' it says. hmmmmmm. " +
+            "There's also a way to the west but I'm uncertain wether I would be able to go both ways through it. Or I could just walk back the same way I came.'" };
+        Room room30 = new Room { Description = "'I defeated the huge rat thing!' 'cONGRATULATIONS aDVENTURER.' 'As I continued into the next room I see an old woman.' " +
+            "'iF yOU wANT tO mAKE iT oUT, yOU hAVE tO dRINK tHIS pOTION, bUT iT'S nOT fREE. yOU sHOULD hAVE jUST eNOUGH iF yOU vENTURED tHROUGH tHE eNTIRE cAVESYSTEM. " +
+            "iF yOU aRE uNSURE iF yOU hAVE eNOUGH oR nOT, yOU cAN cHOOSE tO hEAD bACK, EAST, bUT iF yOU tHINK yOU hAVE eNOUGH, bUY tHE pOTION, WEST. yOUR cHOICE'" };
+        Room room31 = new Room { Description = "" };
 
 
         Room lastRoom = room1;
@@ -118,10 +132,16 @@ class Program
         room26.AddToSouth(room29);
         room27.AddToEast(room28);
         room29.AddToWest(room28, true);
+        room29.AddToEast(room2, true);
+        room30.AddToWest(room31);
 
 
-
+        Console.WriteLine("Welcome to a Single User Dungeon, made by Charlie");
+        Console.WriteLine();
         Console.WriteLine("Press 'Y' to see all Commands // Press 'I' to see your Inventory");
+        Console.WriteLine();
+        Console.WriteLine(currentRoom.Description);
+        Console.WriteLine();
 
 
         // Gameloop
@@ -153,6 +173,9 @@ class Program
                 room27.loot = new Enemy();
                 room28.loot = new Gold();
                 room29.loot = new Sword();
+                currentRoom = room1;
+                lastRoom = room1;
+                AddLoot = false;
             }
             if (Fled)
             {
@@ -161,6 +184,33 @@ class Program
                 lastRoom = tmpRoom;
                 Console.WriteLine(currentRoom.Description);
                 Fled = false;
+            }
+            if (currentRoom == room31)
+            {
+                if (Score == 9999)
+                {
+                    Console.WriteLine("'yOU hAVE eNOUGH. tHANK yOU fOR tHE vISIT!'");
+                    Console.WriteLine("You drink the potion and your vision fades to black.");
+                    Console.WriteLine("You wake up outside of the cave. The entrance isn't blocked anymore.");
+                    Console.WriteLine("You check your pockets to find yourself emptyhanded apart from One Apple.");
+                    Console.WriteLine("You debate wether or not you want to go back or not.");
+                    Console.WriteLine("GOOD ENDING!");
+                    Console.WriteLine("Press Enter to play again.");
+                    Console.ReadLine();
+                    Restart();
+                }
+                else
+                {
+                    Console.WriteLine("'i dON'T kNOW hOW tO sAY tHIS. yOU dON'T hAVE eNOUGH.");
+                    Console.WriteLine("The old lady drinks the potion and fades away.");
+                    Console.WriteLine("You hear the caves rumble as rocks begin to fall.");
+                    Console.WriteLine("BONK");
+                    Console.WriteLine("Right in your head. As your vision turns to black, you wonder why you ever went into this unknown cave.");
+                    Console.WriteLine("bad ending.");
+                    Console.WriteLine("Press Enter to play again.");
+                    Console.ReadLine();
+                    Restart();
+                }
             }
 
             Console.WriteLine("Where do you want to go? (N)orth, (S)outh, (E)ast or (W)est");
@@ -200,10 +250,10 @@ class Program
                     else
                     { 
                     AppleCount--;
-                    UserHP += 10;
+                    UserHP += 5;
                     if (UserHP > MaxHP)
                         UserHP = 20;
-                        Console.WriteLine("You ate an Apple, +10 HP");
+                        Console.WriteLine("You ate an Apple, +5 HP");
                         Console.WriteLine($"Apples: {AppleCount}");
                     }
                     continue;
@@ -228,11 +278,25 @@ class Program
             }
             lastRoom = currentRoom;
             currentRoom = tmpRoom;
+            if (currentRoom == room16)
+            {
+                if (UserDMG != 6)
+                {
+                    Console.WriteLine("'The lock wont budge, I guess I have to become stronger.'");
+                    currentRoom = room17;
+                    lastRoom = room18;
+                    continue;
+                }
+            }
             Console.WriteLine(currentRoom.Description);
             Console.WriteLine();
             CheckForLoot(currentRoom);
 
 
+            if (currentRoom == room7)
+            {
+                room7.Description = "'I'm back at the beginning. Should I go east or west?'";
+            }
         }
 
 
@@ -283,7 +347,7 @@ class Program
         }
         if (room.loot is Boss)
         {
-            
+            BossFound();
         }
 
     }
@@ -296,12 +360,13 @@ class Program
     }
     public static void SwordFound()
     {
-        UserDMG += 2;
-        Console.WriteLine("You found a Sword! +2 DMG");
+        UserDMG += 1;
+        Console.WriteLine("You found a Sword! +1 DMG");
     }
     public static void HelmetFound()
     {
         UserHP += 10;
+        MaxHP += 10;
         Console.WriteLine("You found a Helmet! +10 HP");
     }
     public static void AppleFound()
@@ -357,10 +422,10 @@ class Program
                     else
                     {
                         AppleCount--;
-                        UserHP += 10;
+                        UserHP += 5;
                         if (UserHP > MaxHP)
                             UserHP = 20;
-                        Console.WriteLine("You ate an Apple, +10 HP");
+                        Console.WriteLine("You ate an Apple, +5 HP");
                         Console.WriteLine();
                         Console.WriteLine($"The Rat bit you and did {EnemyDMG}!");
                         UserHP -= EnemyDMG;
@@ -371,11 +436,29 @@ class Program
                     Console.WriteLine("You fled to the room before.");
                     continue;
                 case ConsoleKey.D:
-                    Console.WriteLine($"You swung your sword and did {UserDMG} Damage!");
-                    EnemyHP -= UserDMG;
+                    CritInt = CritRnd.Next(1, 11);
+                    if (CritInt == 1)
+                    {
+                        Console.WriteLine($"You swung and got a CRITICAL HIT, {UserDMG * 2} Damage!");
+                        EnemyHP -= 2 * UserDMG;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"You swung your sword and did {UserDMG} Damage!");
+                        EnemyHP -= UserDMG;
+                    }
                     Console.WriteLine();
-                    Console.WriteLine($"The Rat bit you and did {EnemyDMG} Damage!");
-                    UserHP -= EnemyDMG;
+                    CritInt = CritRnd.Next(1, 11);
+                    if (CritInt == 1)
+                    {
+                        Console.WriteLine($"The Rat bit you and got a CRITICAL HIT, {EnemyDMG * 2} Damage!");
+                        UserHP -= 2 * EnemyDMG;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"The Rat bit you and did {EnemyDMG} Damage!");
+                        UserHP -= EnemyDMG;
+                    }
                     continue;
                 default:
                     System.Console.Write("Not one of the options.");
@@ -386,6 +469,7 @@ class Program
 
         else if (UserHP > 0)
         {
+            Console.WriteLine();
             Console.WriteLine("You Defeated the Rat! +10 Score!");
             Score += 10;
             Console.WriteLine($"Total Score: {Score}");
@@ -399,7 +483,6 @@ class Program
     static void BossFound()
     {
         Console.WriteLine("You encountered a BOSS MUTANT RAT!");
-        EnemyHP = 18;
 
 
         while (UserHP > 0 && EnemyHP > 0 && Fled == false)
@@ -429,26 +512,40 @@ class Program
                     else
                     {
                         AppleCount--;
-                        UserHP += 10;
+                        UserHP += 5;
                         if (UserHP > MaxHP)
                             UserHP = 20;
-                        Console.WriteLine("You ate an Apple, +10 HP");
+                        Console.WriteLine("You ate an Apple, +5 HP");
                         Console.WriteLine();
-                        Console.WriteLine($"The BOSS bit you and did {BossDMG}!");
-                        UserHP -= BossDMG;
                     }
                     continue;
                 case ConsoleKey.F:
-                    Fled = true;
-                    Console.WriteLine("You fled to the room before.");
-                    Console.WriteLine("Where do you want to go? (N)orth, (S)outh, (E)ast or (W)est");
+                    Console.WriteLine("You tried to flee back but the BOSS didn't let you.");
                     continue;
                 case ConsoleKey.D:
-                    Console.WriteLine($"You swung your sword and did {UserDMG} Damage!");
-                    BossHP -= UserDMG;
+                    CritInt = CritRnd.Next(1, 11);
+                    if (CritInt == 1)
+                    {
+                        Console.WriteLine($"You swung and got a CRITICAL HIT, {UserDMG * 2} Damage!");
+                        BossHP -= 2 * UserDMG;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"You swung your sword and did {UserDMG} Damage!");
+                        BossHP -= UserDMG;
+                    }
                     Console.WriteLine();
-                    Console.WriteLine($"The BOSS bit you and did {BossDMG} Damage!");
-                    UserHP -= BossDMG;
+                    CritInt = CritRnd.Next(1, 11);
+                    if (CritInt == 1)
+                    {
+                        Console.WriteLine($"The BOSS bit you and got a CRITICAL HIT, {EnemyDMG * 2} Damage!");
+                        UserHP -= 2 * BossHP;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"The Rat bit you and did {EnemyDMG} Damage!");
+                        UserHP -= BossHP;
+                    }
                     continue;
                 default:
                     System.Console.Write("Not one of the options.");
@@ -472,10 +569,14 @@ class Program
 
     static void Restart()
     {
-        Console.WriteLine("you seem to have died.");
-        Console.WriteLine("sad i guess lol");
-        Console.WriteLine("Press Enter to Start over");
-        Console.ReadLine();
+        if (UserHP !> 0)
+        {
+            Console.WriteLine("you seem to have died.");
+            Console.WriteLine("sad i guess lol");
+            Console.WriteLine("Press Enter to Start over");
+            Console.ReadLine();
+        }
+
         Score = 0;
         UserDMG = 3;
         UserHP = 20;
@@ -492,6 +593,8 @@ class Program
         Fled = false;
         Gameloop = true;
         AddLoot = true;
+
+
 
         Console.Clear();
         Console.WriteLine("DU MÅSTE LÄGGA HIT ALL LOOT SAMT START RUMMET");
