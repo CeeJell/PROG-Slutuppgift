@@ -298,7 +298,7 @@ class Program
                     AppleCount--;
                     UserHP += 5;
                     if (UserHP > MaxHP)
-                        UserHP = 20;
+                        UserHP = MaxHP;
                         Console.WriteLine("You ate an Apple, +5 HP");
                         Console.WriteLine($"Apples: {AppleCount}");
                     }
@@ -487,7 +487,7 @@ class Program
                         AppleCount--;
                         UserHP += 5;
                         if (UserHP > MaxHP)
-                            UserHP = 20;
+                            UserHP = MaxHP;
                         Console.WriteLine("You ate an Apple, +5 HP");
                         Console.WriteLine();
                         Console.WriteLine($"The Rat bit you and did {EnemyDMG} Damage!");
