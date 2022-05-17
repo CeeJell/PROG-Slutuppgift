@@ -546,11 +546,7 @@ class Program
     static void BossFound()
     {
         Console.WriteLine("You encountered a BOSS MUTANT RAT!");
-        if (MaxHP != 35)
-        {
-            BossHP = 40;
-            BossDMG = 5.5;
-        }
+
         while (UserHP > 0 && BossHP > 0 && Fled == false)
         {
             Console.WriteLine();
@@ -625,7 +621,7 @@ class Program
             Console.WriteLine("You Defeated the BOSS! +100 Score!");
             Score += 100;
             Console.WriteLine($"Total Score: {Score}");
-            Console.WriteLine("'I DID IT! There's light at the end of the tunnel to the east, I should check it out!'");
+            Console.WriteLine("'I DID IT! There's light at the end of the tunnel to the west, I should check it out!'");
         }
         else
             Restart();
