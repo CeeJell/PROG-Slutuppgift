@@ -45,7 +45,7 @@ class Program
         Room room14 = new Room { Description = "'Empty. I think I hear another Rat to the south.'" };
         Room room15 = new Room { Description = "'HOLY CRAP THAT RAT IS ENORMOUS! Can I really take him on? He doesn't look too fast though, so I think I will have time " +
             "to eat inbetween hits.'" };
-        Room room16 = new Room { Description = "'The lock broke! Two more apples. Why do I hear such loud breathing to the east?'" };
+        Room room16 = new Room { Description = "'The lock broke! Two more apples. Why do I hear such loud breathing to the west?'" };
         Room room17 = new Room { Description = "'Why is there a door if I continue this way? It looks locked, but maybe I can break the lock using my sword.'" };
         Room room18 = new Room { Description = "'Finally. Some rest. I can go both east and west.'" };
         Room room19 = new Room { Description = "'Damnit, I thought I was done with y'all. I can see something glimmering behind it though.'" };
@@ -455,7 +455,7 @@ class Program
     public static void EnemyFound()
     {
         Console.WriteLine("You encountered a Rat!");
-        EnemyHP = 18;
+        EnemyHP = 14;
 
 
         while (UserHP > 0 && EnemyHP > 0 && Fled == false)
